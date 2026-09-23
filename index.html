@@ -4,64 +4,17 @@
 		<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<title>Mon Site</title>
-				<style>
-					* {
-					margin: 0;
-					padding: 0;
-					box-sizing: border-box;
-					}
-
-					body {
-					font-family: 'Segoe UI', Arial, sans-serif;
-					background: linear-gradient(135deg, #1e3c72, #2a5298);
-					color: #fff;
-					min-height: 100vh;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					text-align: center;
-					padding: 20px;
-					}
-
-					.container {
-					max-width: 600px;
-					animation: fadeIn 1s ease-in;
-					}
-
-					h1 {
-					font-size: 3rem;
-					margin-bottom: 20px;
-					text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-					}
-
-					p {
-					font-size: 1.2rem;
-					color: #e0e0e0;
-					line-height: 1.6;
-					}
-
-					.badge {
-					display: inline-block;
-					margin-top: 30px;
-					padding: 10px 20px;
-					background: rgba(255,255,255,0.15);
-					border: 1px solid rgba(255,255,255,0.3);
-					border-radius: 30px;
-					font-size: 0.9rem;
-					backdrop-filter: blur(5px);
-					}
-
-					@keyframes fadeIn {
-					from { opacity: 0; transform: translateY(-20px); }
-					to { opacity: 1; transform: translateY(0); }
-					}
-				</style>
-			</head>
+				<link rel="stylesheet" href="style.css">
+</head>
 	<body>
 		<div class="container">
 			<h1>Bienvenue sur mon site</h1>
 			<p>Mon premier site hébergé sur GitHub Pages.</p>
 			<div class="badge">🚀 Fait avec Git & GitHub</div>
-		</div>
+			<br>
+				<button id="theme-toggle">☀️ Mode clair</button>
+			</div>
+
+		<script src="script.js"></script>
 	</body>
 </html>
