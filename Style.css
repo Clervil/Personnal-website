@@ -6,37 +6,35 @@
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  background: linear-gradient(135deg, #1e3c72, #2a5298) fixed;
   color: #fff;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   padding: 20px;
   transition: background 0.4s ease, color 0.4s ease;
 }
 
 body.light-mode {
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2) fixed;
   color: #1e1e1e;
 }
 
-.container {
+.hero {
   max-width: 600px;
+  margin: 12vh auto 8vh;
+  text-align: center;
   animation: fadeIn 1s ease-in;
 }
 
 h1 {
   font-size: 3rem;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 }
 
-p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
+.role { font-size: 1.4rem; font-weight: bold; min-height: 1.6em; margin-bottom: 12px; }
+.role::after { content: "|"; margin-left: 2px; animation: blink 1s steps(2) infinite; }
+
+p { font-size: 1.2rem; line-height: 1.6; }
 
 .badge {
   display: inline-block;
@@ -50,7 +48,10 @@ p {
 }
 
 #theme-toggle {
-  margin-top: 25px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
   padding: 12px 24px;
   font-size: 1rem;
   border: none;
@@ -61,12 +62,59 @@ p {
   font-weight: bold;
   transition: transform 0.2s ease;
 }
+#theme-toggle:hover { transform: scale(1.05); }
 
-#theme-toggle:hover {
-  transform: scale(1.05);
+main { max-width: 640px; margin: 0 auto 10vh; }
+section { margin-bottom: 4rem; }
+h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+
+/* Frise du parcours */
+.timeline { list-style: none; border-left: 3px solid rgba(255,255,255,0.5); padding-left: 1.5rem; }
+body.light-mode .timeline { border-left-color: rgba(30,60,114,0.5); }
+.step { position: relative; margin-bottom: 1rem; }
+.step::before {
+  content: ""; position: absolute; left: -2.05rem; top: 1.5rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #2a5298; border: 3px solid #fff; transition: background 0.2s;
 }
+.step.open::before { background: #f2b84b; }
+
+.step-head {
+  width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit;
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.2s ease;
+}
+.step-head:hover { transform: translateX(4px); }
+.step-head:focus-visible { outline: 3px solid #f2b84b; }
+.year { display: block; font-size: 0.9rem; opacity: 0.8; }
+.title { font-size: 1.15rem; font-weight: bold; }
+
+.step-body { display: none; padding: 14px 20px 0; }
+.step.open .step-body { display: block; animation: fadeIn 0.3s ease; }
+.step-body ul { margin: 8px 0 0 1.2rem; line-height: 1.6; }
+
+.skills { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.skills li {
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+}
+
+.contact { color: inherit; font-size: 1.2rem; font-weight: bold; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (max-width: 480px) { h1 { font-size: 2.2rem; } }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
